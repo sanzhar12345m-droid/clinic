@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Почему клиникам с рекламы приходят только холодные заявки?</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Golos+Text:wght@400;500;600&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0f0f0f; --paper: #f8f5f0; --accent: #c8392b;
+    --accent2: #e8a020; --muted: #6b6560; --card: #ffffff; --border: #e2ddd8;
+  }
+  body { font-family: 'Golos Text', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; font-size: 17px; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+  .hero { padding: 64px 0 48px; border-bottom: 2px solid var(--ink); margin-bottom: 48px; }
+  .hero-tag { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; margin-bottom: 24px; }
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 5vw, 42px); line-height: 1.15; font-weight: 900; margin-bottom: 16px; letter-spacing: -0.5px; }
+  h1 span { color: var(--accent); }
+  .hero-sub-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+  .hero-sub { font-size: 18px; color: #2a2521; max-width: 620px; line-height: 1.6; font-weight: 500; }
+  .read-time { margin-top: 20px; font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .read-time::before { content: "⏱"; }
+  h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 3.5vw, 30px); font-weight: 700; margin: 52px 0 16px; line-height: 1.2; }
+  h2 span { color: var(--accent); }
+  p { margin-bottom: 18px; color: #2a2521; }
+  .pullquote { border-left: 4px solid var(--accent); padding: 16px 24px; margin: 32px 0; background: #fff; font-size: 19px; font-weight: 600; font-family: 'Playfair Display', serif; line-height: 1.4; color: var(--ink); }
+  .pain-list { margin: 24px 0; display: flex; flex-direction: column; gap: 12px; }
+  .pain-item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--accent); }
+  .pain-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .pain-text { font-size: 15.5px; line-height: 1.5; color: #2a2521; }
+  .pain-text strong { color: var(--ink); }
+  .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+  .stat-card { background: var(--ink); color: #fff; padding: 24px 20px; position: relative; overflow: hidden; }
+  .stat-card::after { content: ''; position: absolute; bottom: -20px; right: -20px; width: 80px; height: 80px; background: var(--accent); border-radius: 50%; opacity: 0.3; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900; color: var(--accent2); line-height: 1; margin-bottom: 6px; }
+  .stat-label { font-size: 13px; color: #c8c0b8; line-height: 1.4; }
+  .stat-clinic { font-size: 11px; color: #857d75; margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+  .case-block { background: #fff; border: 1px solid var(--border); padding: 28px 28px 24px; margin: 32px 0; position: relative; }
+  .case-tag { position: absolute; top: -1px; left: 28px; background: var(--accent2); color: var(--ink); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; }
+  .case-block h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin: 16px 0 12px; }
+  .case-metrics { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+  .metric { background: var(--paper); padding: 10px 16px; flex: 1; min-width: 100px; text-align: center; }
+  .metric-val { font-size: 22px; font-weight: 700; font-family: 'Playfair Display', serif; color: var(--accent); }
+  .metric-key { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+  .steps { margin: 24px 0; display: flex; flex-direction: column; gap: 0; }
+  .step { display: flex; gap: 20px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border); }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--border); line-height: 1; flex-shrink: 0; width: 44px; }
+  .step-content strong { display: block; font-size: 16px; margin-bottom: 4px; }
+  .step-content p { font-size: 15px; margin: 0; color: var(--muted); }
+  .divider { display: flex; align-items: center; gap: 16px; margin: 48px 0; color: var(--muted); font-size: 13px; }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .mid-cta { background: #fff; border: 2px solid var(--ink); padding: 36px 32px; text-align: center; margin: 48px 0; position: relative; }
+  .mid-cta-tag { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--accent2); color: var(--ink); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 16px; white-space: nowrap; }
+  .mid-cta h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 10px; font-weight: 700; }
+  .mid-cta p { font-size: 15px; color: var(--muted); margin-bottom: 20px; max-width: 440px; margin-left: auto; margin-right: auto; }
+  .mid-cta-btn { display: inline-block; background: var(--ink); color: #fff; text-decoration: none; padding: 14px 32px; font-size: 15px; font-weight: 600; transition: background 0.2s; cursor: pointer; border: none; }
+  .mid-cta-btn:hover { background: #333; }
+  .urgency { background: #fff8ee; border: 2px solid var(--accent2); padding: 24px 28px; margin: 32px 0; display: flex; gap: 18px; align-items: flex-start; }
+  .urgency-icon { font-size: 28px; flex-shrink: 0; }
+  .urgency-text strong { display: block; font-size: 17px; margin-bottom: 6px; color: var(--ink); }
+  .urgency-text p { font-size: 15px; color: #5a4e3a; margin: 0; }
+  .cta-block { background: var(--ink); color: #fff; padding: 48px 40px; text-align: center; margin-top: 56px; position: relative; overflow: hidden; }
+  .cta-block::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: var(--accent); border-radius: 50%; opacity: 0.12; }
+  .cta-block::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 140px; height: 140px; background: var(--accent2); border-radius: 50%; opacity: 0.1; }
+  .cta-label { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent2); margin-bottom: 16px; }
+  .cta-block h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 32px); color: #fff; margin: 0 0 14px; font-weight: 700; line-height: 1.2; }
+  .cta-block > p { color: #a09890; font-size: 15px; max-width: 460px; margin: 0 auto 20px; }
+  .cta-urgency-inline { background: rgba(232,160,32,0.15); border: 1px solid rgba(232,160,32,0.4); color: var(--accent2); font-size: 14px; font-weight: 600; padding: 10px 20px; display: inline-block; margin-bottom: 24px; position: relative; z-index: 1; }
+  .cta-btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; padding: 16px 36px; font-size: 15px; font-weight: 600; transition: background 0.2s; cursor: pointer; border: none; position: relative; z-index: 1; }
+  .cta-btn:hover { background: #a82e22; }
+  .cta-note { margin-top: 14px; font-size: 12px; color: #6b6058; position: relative; z-index: 1; }
+  .highlight { background: #fff8ee; border: 1px solid #f0d090; padding: 18px 22px; margin: 24px 0; font-size: 15.5px; line-height: 1.6; }
+  .highlight strong { color: var(--accent); }
+  @media (max-width: 500px) {
+    .stats-row { grid-template-columns: 1fr; }
+    .cta-block { padding: 36px 24px; }
+    .mid-cta { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-tag">Кейс · Казахстан · Медицина</div>
+    <h1>Почему клиникам с рекламы приходят только <span>холодные заявки?</span></h1>
+    <div class="hero-sub-label">Пошаговый гайд</div>
+    <p class="hero-sub">Как избавиться от холодных заявок, избежав демпинга цен и конкуренции — с реальными примерами из практики</p>
+    <div class="read-time">5 минут чтения</div>
+  </div>
+
+  <p>Если вы владелец частной клиники в Казахстане — скорее всего, вы уже пробовали рекламу. Может, давали в Instagram. Может, запускали Директ. Может, платили агентству.</p>
+  <p>И либо результат был — но нестабильный. Либо деньги ушли, а записей не прибавилось. Либо пациенты приходили, но «не те» — без денег, на акции, один раз.</p>
+
+  <div class="pullquote">Проблема не в рекламе. Проблема в том, что у большинства клиник нет системы. Есть отдельные попытки — но не система.</div>
+
+  <h2>Узнаёте себя?</h2>
+  <p>Вот типичная картина, с которой к нам приходят владельцы клиник:</p>
+
+  <div class="pain-list">
+    <div class="pain-item"><div class="pain-icon">📉</div><div class="pain-text"><strong>Расписание то пустое, то забитое.</strong> Нет предсказуемого потока — только хаос и надежда на сарафан.</div></div>
+    <div class="pain-item"><div class="pain-icon">💸</div><div class="pain-text"><strong>Деньги на рекламу уходят, а записей нет.</strong> Звонки есть — но до приёма доходит половина. Где теряется — непонятно.</div></div>
+    <div class="pain-item"><div class="pain-icon">🏥</div><div class="pain-text"><strong>Конкурентов становится больше.</strong> Каждый месяц открывается новый центр, и бороться ценой — путь в никуда.</div></div>
+    <div class="pain-item"><div class="pain-icon">🔄</div><div class="pain-text"><strong>Пациенты приходят один раз.</strong> База есть, но она «спит». Повторных визитов почти нет — каждый месяц нужно искать новых с нуля.</div></div>
+  </div>
+
+  <p>Если хотя бы два пункта про вас — читайте дальше.</p>
+
+  <div class="divider">реальные цифры</div>
+
+  <h2>Что бывает, когда <span>система есть</span></h2>
+  <p>Два кейса из нашей практики — разные клиники, разные специализации, но одна логика работы.</p>
+
+  <div class="case-block">
+    <div class="case-tag">Кейс #1</div>
+    <h3>Стоматология — Алматы</h3>
+    <p>Клиника работала 3 года. Был сарафан, иногда таргет. Поток нестабильный, на рекламу тратили хаотично, без понимания откуда приходят пациенты.</p>
+    <p>Запустили системную воронку: правильная упаковка, сегментация аудитории, контентная статья как первое касание + квалификация заявок. Результат — за <strong>2 месяца</strong>:</p>
+    <div class="case-metrics">
+      <div class="metric"><div class="metric-val">570%</div><div class="metric-key">ROMI</div></div>
+      <div class="metric"><div class="metric-val">1.9 млн</div><div class="metric-key">вложено ₸</div></div>
+      <div class="metric"><div class="metric-val">10.8 млн</div><div class="metric-key">получено ₸</div></div>
+    </div>
+    <p style="font-size:14px;color:#6b6560;margin:0">На каждый вложенный тенге — 5.7 тенге возврата. За два месяца.</p>
+  </div>
+
+  <div class="case-block">
+    <div class="case-tag">Кейс #2</div>
+    <h3>Клиника ЛФК и неонатологии</h3>
+    <p>Узкая специализация — казалось бы, маленький рынок. Но узкий рынок = точная аудитория. Применили ту же логику: статья-воронка на конкретную боль родителей, трафик через таргет.</p>
+    <div class="case-metrics">
+      <div class="metric"><div class="metric-val">730%</div><div class="metric-key">ROMI</div></div>
+      <div class="metric"><div class="metric-val">400К</div><div class="metric-key">вложено ₸</div></div>
+      <div class="metric"><div class="metric-val">~3 млн</div><div class="metric-key">получено ₸</div></div>
+    </div>
+    <p style="font-size:14px;color:#6b6560;margin:0">Узкая ниша сыграла в плюс — конкуренция за внимание ниже, цена заявки дешевле.</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-num">×5.7</div><div class="stat-label">возврат на каждый вложенный тенге</div><div class="stat-clinic">Стоматология</div></div>
+    <div class="stat-card"><div class="stat-num">×7.3</div><div class="stat-label">возврат на каждый вложенный тенге</div><div class="stat-clinic">ЛФК / Неонатология</div></div>
+  </div>
+
+  <div class="mid-cta">
+    <div class="mid-cta-tag">🎁 Бесплатно · 45 минут</div>
+    <h3>Хотите так же?</h3>
+    <p>Разберём вашу клинику и покажем, где прямо сейчас теряются пациенты — и как это исправить</p>
+    <a class="mid-cta-btn" href="https://wa.me/87009507299" target="_blank" onclick="fbq('track', 'Lead')">Получить бесплатный разбор →</a>
+  </div>
+
+  <div class="divider">как это работает</div>
+
+  <h2>В чём суть <span>системного подхода</span></h2>
+  <p>Большинство клиник запускают рекламу напрямую на запись: «Приходите к нам». Это работает только с теми, кто уже готов — а таких 3–5% от аудитории.</p>
+
+  <div class="highlight">Мы работаем с <strong>остальными 95%</strong> — теми, кто ещё думает, сравнивает, сомневается. Их нужно провести от «интересно» до «записываюсь» — через правильный контент и воронку доверия.</div>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div class="step-content"><strong>Ресёрч и сегментация</strong><p>Находим, кто ваш платёжеспособный пациент, что его беспокоит, как он ищет клинику — и на каком языке с ним говорить.</p></div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-content"><strong>Контентный оффер</strong><p>Статья или материал, который попадает точно в боль. Не «мы лучшие» — а «вот почему у вас эта проблема и что с ней делать».</p></div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-content"><strong>Воронка квалификации</strong><p>Не просто «оставьте номер». Фильтруем нецелевые заявки — к вам приходят только те, кто готов платить и уже доверяет.</p></div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-content"><strong>Трафик и оптимизация</strong><p>Запускаем, смотрим цифры, докручиваем. Не «слили и ждём» — а живая работа с данными каждую неделю.</p></div></div>
+  </div>
+
+  <div class="pullquote">Цель не «больше рекламы». Цель — предсказуемый поток платёжеспособных пациентов, которые возвращаются.</div>
+
+  <h2>Для кого это <span>подходит</span></h2>
+  <p>Мы работаем с частными клиниками Казахстана — стоматологии, многопрофильные центры, узкие специализации: гинекология, ортопедия, педиатрия, косметология и другие.</p>
+  <p>Не подойдёт, если вы хотите «просто попробовать рекламу» с бюджетом 50К и ждёте чуда за неделю. Система требует времени и нормального бюджета — зато даёт результат, который масштабируется.</p>
+
+  <div class="urgency">
+    <div class="urgency-icon">🔥</div>
+    <div class="urgency-text">
+      <strong>Специальное условие для первых 3 клиник</strong>
+      <p>Первые 3 человека, которые забронируют разбор, получают дополнительно <strong>скидку 30% на первый месяц работы.</strong> Осталось мест: 3.</p>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-label">Бесплатно · 45 минут · Только для клиник КЗ</div>
+    <h2>Разберём вашу клинику бесплатно</h2>
+    <p>Покажем, где у вас сейчас дыры в привлечении, какой канал сработает быстрее всего — и что реально можно получить за первые 2 месяца.</p>
+    <div class="cta-urgency-inline">🔥 Первые 3 клиники получают скидку 30% на месяц работы</div><br>
+    <a class="cta-btn" href="https://wa.me/87009507299" target="_blank" onclick="fbq('track', 'Lead')">Получить бесплатный разбор →</a>
+    <div class="cta-note">Без продаж и обязательств. Просто честный разбор на 45 минут.</div>
+  </div>
+
+</div>
+</body>
+</html>
